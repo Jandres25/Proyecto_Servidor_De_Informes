@@ -9,7 +9,7 @@
       <am:Name>SSDTRS</am:Name>
       <am:Version>17.10.34916.146</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2024-05-27T23:14:54.9019662Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2024-05-28T20:27:28.0039311Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -647,10 +647,10 @@ GROUP BY p.Id, c.Id, p.FechaPedido, z.NombreZona, b.NombreBarrio, n.Id, n.Nombre
                     </GroupExpressions>
                     <Filters>
                       <Filter>
-                        <FilterExpression>=Fields!MontoTotal.Value</FilterExpression>
-                        <Operator>GreaterThan</Operator>
+                        <FilterExpression>=Sum(Fields!MontoTotal.Value)</FilterExpression>
+                        <Operator>TopN</Operator>
                         <FilterValues>
-                          <FilterValue DataType="Float">90</FilterValue>
+                          <FilterValue>3</FilterValue>
                         </FilterValues>
                       </Filter>
                     </Filters>
@@ -752,6 +752,8 @@ GROUP BY p.Id, c.Id, p.FechaPedido, z.NombreZona, b.NombreBarrio, n.Id, n.Nombre
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style />
+                        <UseValueAsLabel>true</UseValueAsLabel>
+                        <Visible>true</Visible>
                       </ChartDataLabel>
                       <Style />
                       <ChartMarker>
@@ -1165,6 +1167,92 @@ GROUP BY p.Id, c.Id, p.FechaPedido, z.NombreZona, b.NombreBarrio, n.Id, n.Nombre
             </Border>
           </Style>
         </PageHeader>
+        <PageFooter>
+          <Height>2.48168cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="Textbox12">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Now()</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox8</rd:DefaultName>
+              <Top>0.94084cm</Top>
+              <Left>26.95724cm</Left>
+              <Height>0.6cm</Height>
+              <Width>4.74896cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox4">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Derechos reservados UPDS</Value>
+                      <Style>
+                        <FontSize>12pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox4</rd:DefaultName>
+              <Top>0.94084cm</Top>
+              <Left>12.09281cm</Left>
+              <Height>0.6cm</Height>
+              <Width>9.56437cm</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Line Name="Line1">
+              <Height>0cm</Height>
+              <Width>32.71098cm</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Line>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>2cm</LeftMargin>
