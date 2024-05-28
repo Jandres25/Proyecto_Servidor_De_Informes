@@ -9,7 +9,7 @@
       <am:Name>SSDTRS</am:Name>
       <am:Version>17.10.34916.146</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2024-05-28T20:27:28.0039311Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2024-05-28T21:01:26.8541810Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -27,30 +27,23 @@
     <DataSet Name="DataSet1">
       <Query>
         <DataSourceName>DataSource</DataSourceName>
-        <CommandText>SELECT
-    p.Id AS PedidoId,
-    c.Id AS ClienteId,
-    CASE
-        WHEN n.Id IS NOT NULL THEN CONCAT(n.NombreCliente, ' ', n.ApellidoPaterno, ' ', n.ApellidoMaterno)
-        ELSE j.RazonSocial
-    END AS NombreCliente,
-    YEAR(p.FechaPedido) AS Gestion,
-    z.NombreZona,
-    b.NombreBarrio,
-	CASE
-        WHEN n.Id IS NOT NULL THEN 'Natural'
-        ELSE 'Juridico'
-    END AS TipoCliente,
-    SUM(dp.Cantidad * pr.PrecioVenta) AS MontoTotal
-FROM Pedido p
-INNER JOIN DetallePedido dp ON p.Id = dp.IdPedido
-INNER JOIN Producto pr ON dp.IdProducto = pr.Id
-INNER JOIN Cliente c ON p.ClienteId = c.Id
-LEFT JOIN Natural n ON c.Id = n.Id
-LEFT JOIN Juridico j ON c.Id = j.Id
-INNER JOIN Barrio b ON c.BarrioId = b.Id
-INNER JOIN Zona z ON b.ZonaId = z.Id
-GROUP BY p.Id, c.Id, p.FechaPedido, z.NombreZona, b.NombreBarrio, n.Id, n.NombreCliente, n.ApellidoPaterno, n.ApellidoMaterno, j.RazonSocial;</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@NombreZona">
+            <Value>=Parameters!NombreZona.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT        p.Id AS PedidoId, c.Id AS ClienteId, CASE WHEN n.Id IS NOT NULL THEN CONCAT(n.NombreCliente, ' ', n.ApellidoPaterno, ' ', n.ApellidoMaterno) ELSE j.RazonSocial END AS NombreCliente, YEAR(p.FechaPedido) AS Gestion, 
+                         z.NombreZona, b.NombreBarrio, CASE WHEN n.Id IS NOT NULL THEN 'Natural' ELSE 'Juridico' END AS TipoCliente, SUM(dp.Cantidad * pr.PrecioVenta) AS MontoTotal
+FROM            Pedido AS p INNER JOIN
+                         DetallePedido AS dp ON p.Id = dp.IdPedido INNER JOIN
+                         Producto AS pr ON dp.IdProducto = pr.Id INNER JOIN
+                         Cliente AS c ON p.ClienteId = c.Id LEFT OUTER JOIN
+                         [Natural] AS n ON c.Id = n.Id LEFT OUTER JOIN
+                         Juridico AS j ON c.Id = j.Id INNER JOIN
+                         Barrio AS b ON c.BarrioId = b.Id INNER JOIN
+                         Zona AS z ON b.ZonaId = z.Id
+WHERE        (z.NombreZona = @NombreZona)
+GROUP BY p.Id, c.Id, p.FechaPedido, z.NombreZona, b.NombreBarrio, n.Id, n.NombreCliente, n.ApellidoPaterno, n.ApellidoMaterno, j.RazonSocial</CommandText>
       </Query>
       <Fields>
         <Field Name="PedidoId">
@@ -138,7 +131,9 @@ GROUP BY p.Id, c.Id, p.FechaPedido, z.NombreZona, b.NombreBarrio, n.Id, n.Nombre
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox9</rd:DefaultName>
@@ -173,7 +168,9 @@ GROUP BY p.Id, c.Id, p.FechaPedido, z.NombreZona, b.NombreBarrio, n.Id, n.Nombre
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
@@ -208,7 +205,9 @@ GROUP BY p.Id, c.Id, p.FechaPedido, z.NombreZona, b.NombreBarrio, n.Id, n.Nombre
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox10</rd:DefaultName>
@@ -243,7 +242,9 @@ GROUP BY p.Id, c.Id, p.FechaPedido, z.NombreZona, b.NombreBarrio, n.Id, n.Nombre
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox14</rd:DefaultName>
@@ -278,7 +279,9 @@ GROUP BY p.Id, c.Id, p.FechaPedido, z.NombreZona, b.NombreBarrio, n.Id, n.Nombre
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox11</rd:DefaultName>
@@ -313,7 +316,9 @@ GROUP BY p.Id, c.Id, p.FechaPedido, z.NombreZona, b.NombreBarrio, n.Id, n.Nombre
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox16</rd:DefaultName>
@@ -348,7 +353,9 @@ GROUP BY p.Id, c.Id, p.FechaPedido, z.NombreZona, b.NombreBarrio, n.Id, n.Nombre
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox13</rd:DefaultName>
@@ -617,7 +624,9 @@ GROUP BY p.Id, c.Id, p.FechaPedido, z.NombreZona, b.NombreBarrio, n.Id, n.Nombre
                                 </Style>
                               </TextRun>
                             </TextRuns>
-                            <Style />
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
                           </Paragraph>
                         </Paragraphs>
                         <rd:DefaultName>Textbox18</rd:DefaultName>
@@ -647,18 +656,17 @@ GROUP BY p.Id, c.Id, p.FechaPedido, z.NombreZona, b.NombreBarrio, n.Id, n.Nombre
                     </GroupExpressions>
                     <Filters>
                       <Filter>
-                        <FilterExpression>=Sum(Fields!MontoTotal.Value)</FilterExpression>
-                        <Operator>TopN</Operator>
+                        <FilterExpression>=Fields!NombreZona.Value</FilterExpression>
+                        <Operator>Equal</Operator>
                         <FilterValues>
-                          <FilterValue>3</FilterValue>
+                          <FilterValue>=Parameters!NombreZona.Value</FilterValue>
                         </FilterValues>
                       </Filter>
                     </Filters>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=SUM(Fields!MontoTotal.Value)</Value>
-                      <Direction>Descending</Direction>
+                      <Value>=Fields!MontoTotal.Value</Value>
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
@@ -1029,7 +1037,7 @@ GROUP BY p.Id, c.Id, p.FechaPedido, z.NombreZona, b.NombreBarrio, n.Id, n.Nombre
                 </Style>
               </ChartTitle>
             </ChartTitles>
-            <Palette>Pacific</Palette>
+            <Palette>BrightPastel</Palette>
             <ChartBorderSkin>
               <Style>
                 <BackgroundColor>Gray</BackgroundColor>
@@ -1049,10 +1057,10 @@ GROUP BY p.Id, c.Id, p.FechaPedido, z.NombreZona, b.NombreBarrio, n.Id, n.Nombre
             <DataSetName>DataSet1</DataSetName>
             <Filters>
               <Filter>
-                <FilterExpression>=Fields!MontoTotal.Value</FilterExpression>
-                <Operator>GreaterThan</Operator>
+                <FilterExpression>=Fields!NombreZona.Value</FilterExpression>
+                <Operator>Equal</Operator>
                 <FilterValues>
-                  <FilterValue DataType="Float">90</FilterValue>
+                  <FilterValue>=Parameters!NombreZona.Value</FilterValue>
                 </FilterValues>
               </Filter>
             </Filters>
@@ -1264,10 +1272,23 @@ GROUP BY p.Id, c.Id, p.FechaPedido, z.NombreZona, b.NombreBarrio, n.Id, n.Nombre
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="NombreZona">
+      <DataType>String</DataType>
+      <Prompt>Nombre Zona</Prompt>
+    </ReportParameter>
+  </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
       <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>NombreZona</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <EmbeddedImages>
