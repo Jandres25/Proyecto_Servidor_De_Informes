@@ -1,0 +1,48 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Jose Andres Lopez\\OneDrive - Universidad Privada Domingo Savio\\Documentos\\Modulos de la universidad\\Inteligencia de negocios\\Proyecto de informe\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DF747CB1-BCE9-4EFB-81A3-E64BC163818B}|Proyecto de informe.rptproj|C:\\Users\\Jose Andres Lopez\\OneDrive - Universidad Privada Domingo Savio\\Documentos\\Modulos de la universidad\\Inteligencia de negocios\\Proyecto de informe\\Report1.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
+      "RelativeMoniker": "D:0:0:{DF747CB1-BCE9-4EFB-81A3-E64BC163818B}|Proyecto de informe.rptproj|solutionrelative:Report1.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{6d4078d1-5951-4ed1-ac0e-0a8099c1cce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Report1.rdl [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Jose Andres Lopez\\OneDrive - Universidad Privada Domingo Savio\\Documentos\\Modulos de la universidad\\Inteligencia de negocios\\Proyecto de informe\\Report1.rdl",
+              "RelativeDocumentMoniker": "Report1.rdl",
+              "ToolTip": "C:\\Users\\Jose Andres Lopez\\OneDrive - Universidad Privada Domingo Savio\\Documentos\\Modulos de la universidad\\Inteligencia de negocios\\Proyecto de informe\\Report1.rdl [Dise\u00F1o]",
+              "RelativeToolTip": "Report1.rdl [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-22T23:12:44.173Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
